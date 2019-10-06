@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listas de tarefas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+      <ion-label position="stacked">Adicionar uma lista</ion-label>
+      <ion-input  [(ngModel)]="listTitle" placeholder="nova lista" autofocus></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="addList()">Adicionar</ion-button>
+
+  <ion-list>
+    <ion-item (click)="navigate(item)" *ngFor="let item of items">
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <p *ngIf="!items">Loading</p>
+
+</ion-content>

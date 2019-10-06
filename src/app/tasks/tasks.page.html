@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Tarefas</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-item>
+        <ion-label position="stacked">Adicionar uma tarefa</ion-label>
+        <ion-input  [(ngModel)]="taskTitle" placeholder="nova tarefa" autofocus></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="addTask()">Adicionar</ion-button>
+  
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{item.name}}</ion-label>
+        <ion-label>{{item.done === true ? 'Feito' : 'Imcompleto'}}</ion-label>
+        <ion-button (click)="changeDone(item)">Inverter</ion-button>
+        <ion-button color="danger" (click)="deleteTask(item)">Remover</ion-button>
+      </ion-item>
+      
+    </ion-list>
+
+    <p *ngIf="!items">Loading</p>
+    
+  </ion-content>
+  
